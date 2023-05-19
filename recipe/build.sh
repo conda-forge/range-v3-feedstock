@@ -19,6 +19,8 @@ cmake ${CMAKE_ARGS} \
 
 make -j${CPU_COUNT} VERBOSE=1
 
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR}" != "" ]]; then
 ctest -j${CPU_COUNT} --output-on-failure
+fi
 
 make install
